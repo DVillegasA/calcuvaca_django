@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class Employ(models.Model):
     name = models.CharField('Nombre del Empleado', max_length=255)
     entry_date = models.DateField('Fecha de Ingreso')

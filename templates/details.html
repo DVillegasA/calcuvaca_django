@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Detalles Empleados {% endblock title %}
+{% block content %}
+<a href="{% url "home" %}">&#8592; Volver</a>
+<br><br>
+{% if employ is None %}
+<article>
+    <p><strong>Empleado no existe</strong></p>
+</article>
+{% else %}
+<article>
+    <div class="grid">
+        <div>
+            <p><strong>Nombre</strong>: {{ employ.name }}</p>
+            <p><strong>Fecha de Ingreso</strong>: {{ employ.entry_date }}</p>
+            <p><strong>Días de vacaciones tomados</strong>: {{ days_taken }}</p>
+        </div>
+        <div>
+            <p><strong>Días Disponibles</strong>: {{ vacation_days|floatformat:1 }}</p>
+        </div>
+    </div>
+</article>
+{% endif %}
+{% endblock content %}
