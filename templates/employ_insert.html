@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} Ingresar empleado nuevo {% endblock title %}
+{% block content %}
+    <h4>Insertar Empleado Nuevo</h4>
+    <article>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <br>
+            <input type="submit" value="Insertar">
+        </form>
+        <p class="text-danger">{% if message %}{{ message }}{% endif %}</p>
+    </article>
+{% endblock %}

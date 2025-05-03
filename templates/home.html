@@ -1,20 +1,32 @@
 {% extends "base.html" %}
 {% block title %} Calculadora de Vacaciones {% endblock title %}
 {% block content %}
-<table>
-    <tr>
-        <th><b>Id</b></th>
-        <th><b>Nombre</b></th>
-        <th><b>Fecha de Ingreso</b></th>
-        <th></th>
-    </tr>
-    {% for employ in employs %}
-    <tr>
-        <td>{{ employ.id }}</td>
-        <td>{{ employ.name }}</td>
-        <td>{{ employ.entry_date }}</td>
-        <td><a href="{% url "details" employ.id %}">Detalles</a></td>
-    </tr>
-    {% endfor %}
-</table>
+<nav>
+    <ul>
+        <li>
+            <h4>Lista de Empleados</h4>
+        </li>
+    </ul>
+    <ul>
+        <li><a type="button" class="btn btn-primary" href="{% url 'employ_insert' %}">Ingresar Nuevo Empleado</a></li>
+    </ul>
+</nav>
+<article>
+    <table>
+        <tr>
+            <th><b>Id</b></th>
+            <th><b>Nombre</b></th>
+            <th><b>Fecha de Ingreso</b></th>
+            <th></th>
+        </tr>
+        {% for employ in employs %}
+        <tr>
+            <td>{{ employ.id }}</td>
+            <td>{{ employ.name }}</td>
+            <td>{{ employ.entry_date }}</td>
+            <td><a href="{% url "details" employ.id %}">Detalles</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</article>
 {% endblock %}
