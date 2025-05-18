@@ -17,8 +17,23 @@
         </div>
         <div>
             <p><strong>Días Disponibles</strong>: {{ vacation_days|floatformat:1 }}</p>
+            <p><a type="button" class="btn btn-primary" href="{% url 'vacation_taken_insert' employ.id %}">Ingresar Solicitud de Vacaciones</a></p>
         </div>
     </div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Fecha de solicitud</th>
+            <th>Cantidad de días tomados</th>
+        </tr>
+        {% for day_taken in vacations_taken %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ day_taken.vacation_date }}</td>
+            <td>{{ day_taken.vacation_days }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </article>
 {% endif %}
 {% endblock content %}

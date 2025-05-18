@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Ingresar solicitud de vacaciones {% endblock title %}
+{% block content %}
+{% if employ is None %}
+<a href="{% url "home" %}">&#8592; Volver</a>
+<article>
+    <p><strong>Empleado no existe</strong></p>
+</article>
+{% else %}
+<h4>Ingresar solicitud de vacaciones para {{ employ.name }}</h4>
+<a href="{% url "details" employ.id %}">&#8592; Volver</a>
+<article>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <br>
+        <input type="submit" value="Insertar">
+    </form>
+    <p class="text-danger">{% if message %}{{ message }}{% endif %}</p>
+</article>
+{% endif %}
+{% endblock %}
